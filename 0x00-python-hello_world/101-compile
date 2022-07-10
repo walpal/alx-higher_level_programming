@@ -1,2 +1,2 @@
 #!/bin/bash
-su betty
+python3 -m compileall -b $PYFILE
