@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-import random
-number = random.randint(-10000, 10000)
-last_digit = number % 10 if number >= 0 else ((-number % 10) * -1)
-message = f"Last digit of {number} is {last_digit}"
+if __name__ == "__main__":
+    from calculator_1 import add, sub, mul, div
 
-if last_digit == 0:
-    print(f"{message} and is 0")
-elif last_digit > 5 and last_digit % 10 != 0:
-    print(f"{message} and is greater than 5")
-else:
-    print(f"{message} and is less than 6 and not 0")
+    a = 10
+    b = 5
+
+    print("{} + {} = {}".format(a, b, add(a, b)))
+    print("{} - {} = {}".format(a, b, sub(a, b)))
+    print("{} * {} = {}".format(a, b, mul(a, b)))
+    print("{} / {} = {}".format(a, b, div(a, b)))
