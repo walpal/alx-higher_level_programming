@@ -1,2 +1,2 @@
-#!/bin/bash
-su betty
+#!/usr/bin/python3
+import this
