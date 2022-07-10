@@ -1,7 +1,10 @@
 #!/usr/bin/python3
-for number in range(100):
-    if int(number / 10) != number % 10 and int(number / 10) < number % 10:
-        print("{}{}".format(int(number / 10), number % 10), end="")
-        if (number != 89):
-            print(", ", end="")
-print("")
+def add(a, b):
+    """My addition function
+    Args:
+        a: first integer
+        b: second integer
+    Returns:
+        The return value. a + b
+    """
+    return (a + b)
