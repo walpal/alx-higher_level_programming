@@ -1,6 +1,43 @@
 #!/usr/bin/python3
-def islower(c):
-    ascii_num = ord(c)
-    if ascii_num >= 97 and ascii_num <= 122:
-        return True
-    return False
+def add(a, b):
+    """My addition function
+    Args:
+        a: first integer
+        b: second integer
+    Returns:
+        The return value. a + b
+    """
+    return (a + b)
+
+
+def sub(a, b):
+    """My subtraction function
+    Args:
+        a: first integer
+        b: second integer
+    Returns:
+        The return value. a - b
+    """
+    return (a - b)
+
+
+def mul(a, b):
+    """My multiplication function
+    Args:
+        a: first integer
+        b: second integer
+    Returns:
+        The return value. a * b
+    """
+    return (a * b)
+
+
+def div(a, b):
+    """My division function
+    Args:
+        a: first integer
+        b: second integer
+    Returns:
+        The return value. a / b
+    """
+    return int(a / b)
