@@ -1,4 +1,8 @@
 #!/usr/bin/python3
-for char in range(26):
-    if char != 4 and char != 16:
-        print("{:s}".format(chr(char + ord("a"))), end="")
+if __name__ == "__main__":
+    import sys
+    result = 0
+    for arg in sys.argv:
+        if arg != sys.argv[0]:
+            result += int(arg)
+    print(result)
