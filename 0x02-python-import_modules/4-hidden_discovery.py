@@ -1,3 +1,7 @@
 #!/usr/bin/python3
-for num in range(99):
-    print("{:d} = {:s}".format(num, hex(num)))
+if __name__ == "__main__":
+    from hidden_4 import *
+    arr = dir()
+    for i in range(0, len(arr)):
+        if arr[i][0:2] != "__":
+            print("{}".format(arr[i]))
