@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-def print_last_digit(number):
-    if number >= 0:
-        l_digit = number % 10
-    else:
-        l_digit = number % -10
-        l_digit *= -1
+def max_integer(my_list=[]):
+    length = len(my_list)
 
-    print("{:d}".format(l_digit), end='')
-    return (l_digit)
+    if length == 0:
+        return (None)
+
+    max_int = my_list[0]
+
+    for i in range(1, length):
+        if my_list[i] > max_int:
+            max_int = my_list[i]
+
+    return (max_int)
