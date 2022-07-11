@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-for number in range(100):
-    if int(number / 10) != number % 10 and int(number / 10) < number % 10:
-        print("{}{}".format(int(number / 10), number % 10), end="")
-        if (number != 89):
-            print(", ", end="")
-print("")
+def print_sorted_dictionary(a_dictionary):
+    list_ord = list(a_dictionary.keys())
+    list_ord.sort()
+    for i in list_ord:
+        print("{}: {}".format(i, a_dictionary.get(i)))
