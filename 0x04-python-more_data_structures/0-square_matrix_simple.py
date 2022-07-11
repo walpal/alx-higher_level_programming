@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-import random
-number = random.randint(-10, 10)
-if number > 0:
-    print("{:d} is positive".format(number))
-elif number == 0:
-    print("{:d} is zero".format(number))
-else:
-    print("{:d} is negative".format(number))
+def square_matrix_simple(matrix=[]):
+    new_matrix = matrix.copy()
+
+    for i in range(len(matrix)):
+        new_matrix[i] = list(map(lambda x: x**2, matrix[i]))
+
+    return (new_matrix)
