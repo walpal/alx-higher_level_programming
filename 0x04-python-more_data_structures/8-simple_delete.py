@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-def uppercase(str):
-    for i in range(len(str)):
-        if ord(str[i]) >= 97 and ord(str[i]) <= 122:
-            num = 32
-        else:
-            num = 0
-        print("{:c}".format(ord(str[i]) - num), end='')
-    print()
+def simple_delete(a_dictionary, key=""):
+    if a_dictionary.get(key) is not None:
+        del a_dictionary[key]
+    return (a_dictionary)
