@@ -1,70 +1,114 @@
-#include <stdio.h>
-#include <Python.h>
+#include "lists.h"
 
 /**
- * print_python_bytes - Prints bytes information
+ * reverse - reverses the second half of the list
  *
- * @p: Python Object
+ * @h_r: head of the second half
  * Return: no return
  */
-void print_python_bytes(PyObject *p)
+void reverse(listint_t **h_r)
 {
-	char *string;
-	long int size, i, limit;
+	listint_t *prv;
+	listint_t *crr;
+	listint_t *nxt;
 
-	printf("[.] bytes object info\n");
-	if (!PyBytes_Check(p))
+	prv = NULL;
+	crr = *h_r;
+
+	while (crr != NULL)
 	{
-		printf("  [ERROR] Invalid Bytes Object\n");
-		return;
+		nxt = crr->next;
+		crr->next = prv;
+		prv = crr;
+		crr = nxt;
 	}
 
-	size = ((PyVarObject *)(p))->ob_size;
-	string = ((PyBytesObject *)p)->ob_sval;
-
-	printf("  size: %ld\n", size);
-	printf("  trying string: %s\n", string);
-
-	if (size >= 10)
-		limit = 10;
-	else
-		limit = size + 1;
-
-	printf("  first %ld bytes:", limit);
-
-	for (i = 0; i < limit; i++)
-		if (string[i] >= 0)
-			printf(" %02x", string[i]);
-		else
-			printf(" %02x", 256 + string[i]);
-
-	printf("\n");
+	*h_r = prv;
 }
 
 /**
- * print_python_list - Prints list information
+ * compare - compares each int of the list
  *
- * @p: Python Object
- * Return: no return
+ * @h1: head of the first half
+ * @h2: head of the second half
+ * Return: 1 if are equals, 0 if not
  */
-void print_python_list(PyObject *p)
+int compare(listint_t *h1, listint_t *h2)
 {
-	long int size, i;
-	PyListObject *list;
-	PyObject *obj;
+	listint_t *tmp1;
+	listint_t *tmp2;
 
-	size = ((PyVarObject *)(p))->ob_size;
-	list = (PyListObject *)p;
+	tmp1 = h1;
+	tmp2 = h2;
 
-	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", list->allocated);
-
-	for (i = 0; i < size; i++)
+	while (tmp1 != NULL && tmp2 != NULL)
 	{
-		obj = ((PyListObject *)p)->ob_item[i];
-		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
-		if (PyBytes_Check(obj))
-			print_python_bytes(obj);
+		if (tmp1->n == tmp2->n)
+		{
+			tmp1 = tmp1->next;
+			tmp2 = tmp2->next;
+		}
+		else
+		{
+			return (0);
+		}
 	}
+
+	if (tmp1 == NULL && tmp2 == NULL)
+	{
+		return (1);
+	}
+
+	return (0);
+}
+
+/**
+ * is_palindrome - checks if a singly linked list
+ * is a palindrome
+ * @head: pointer to head of list
+ * Return: 0 if it is not a palindrome,
+ * 1 if it is a palndrome
+ */
+int is_palindrome(listint_t **head)
+{
+	listint_t *slow, *fast, *prev_slow;
+	listint_t *scn_half, *middle;
+	int isp;
+
+	slow = fast = prev_slow = *head;
+	middle = NULL;
+	isp = 1;
+
+	if (*head != NULL && (*head)->next != NULL)
+	{
+		while (fast != NULL && fast->next != NULL)
+		{
+			fast = fast->next->next;
+			prev_slow = slow;
+			slow = slow->next;
+		}
+
+		if (fast != NULL)
+		{
+			middle = slow;
+			slow = slow->next;
+		}
+
+		scn_half = slow;
+		prev_slow->next = NULL;
+		reverse(&scn_half);
+		isp = compare(*head, scn_half);
+
+		if (middle != NULL)
+		{
+			prev_slow->next = middle;
+			middle->next = scn_half;
+		}
+		else
+		{
+			prev_slow->next = scn_half;
+		}
+	}
+
+	return (isp);
 }
