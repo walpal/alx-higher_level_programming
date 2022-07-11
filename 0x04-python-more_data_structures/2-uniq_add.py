@@ -1,3 +1,9 @@
 #!/usr/bin/python3
-for char in range(26):
-    print("{:s}".format(chr(char + ord("a"))), end="")
+def uniq_add(my_list=[]):
+    uniq_list = set(my_list)
+    num = 0
+
+    for i in uniq_list:
+        num += i
+
+    return (num)
