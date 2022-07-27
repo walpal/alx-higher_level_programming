@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""class that defines a square with more Private instance attribute and a Public instance method"""
+"""class that defines a square with more Private 
+instance attributes and a Public instance method
+"""
 
 
 class Square:
