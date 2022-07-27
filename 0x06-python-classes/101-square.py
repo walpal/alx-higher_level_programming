@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""class that defines that defines a square
-whose instances can answer to comparators
+"""class that defines a square
+whose instances should have the 
+same behavior as my_print()
 """
 
 
