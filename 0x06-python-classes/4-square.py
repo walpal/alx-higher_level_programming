@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """class that defines a square with 
 more Private instance attributes and
-a Public instance method
+a Public instance method for Setters 
+and Getters
 """
 
 
@@ -14,7 +15,7 @@ class Square:
     Public instance method: def area(self).
     """
 
-  def __init__(self, size=0):
+    def __init__(self, size=0):
         """Constructor of a Square with the size"""
         if (type(size) is not int):
             raise (TypeError("size must be an integer"))
