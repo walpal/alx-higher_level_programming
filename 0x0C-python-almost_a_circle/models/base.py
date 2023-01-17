@@ -9,21 +9,22 @@ import csv
 
 
 class Base:
-    """Class with:
-    Private class attribute: __nb_objects
+    """Base model.
+
+    This Represents the "base" for all other classes in project 0x0C*.
+
+    Private Class Attributes:
+        __nb_object (int): Number of instantiated Bases.
     """
 
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Initialization of a Base instance.
+        """Initialize a new Base.
 
         Args:
-            - id: id of the instance
+            id (int): The identity of the new Base.
         """
-
-        if type(id) != int and id is not None:
-            raise TypeError("id must be an integer")
         if id is not None:
             self.id = id
         else:
